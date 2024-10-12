@@ -5,15 +5,29 @@ from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
+# from webdriver_manager.microsoft import EdgeChromiumDriverManager
+
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+# Khởi tạo Chrome WebDriver với WebDriver Manager
+service = Service(ChromeDriverManager().install())
+options = Options()
+options.add_argument('--headless')  # Chạy không có giao diện đồ họa
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+# Khởi tạo Chrome WebDriver
+driver = webdriver.Chrome(service=service, options=options)
+
 
 # Khởi tạo Edge WebDriver với WebDriver Manager
-service = Service(EdgeChromiumDriverManager().install())
+# service = Service(EdgeChromiumDriverManager().install())
 
-options = Options()
-options.headless = True  # Chạy trình duyệt trong chế độ headless
-options.add_argument('--no-sandbox')  # Bỏ qua sandbox
-options.add_argument('--disable-dev-shm-usage')  # Giảm sử dụng bộ nhớ chia sẻ
+# options = Options()
+# options.headless = True  # Chạy trình duyệt trong chế độ headless
+# options.add_argument('--no-sandbox')  # Bỏ qua sandbox
+# options.add_argument('--disable-dev-shm-usage')  # Giảm sử dụng bộ nhớ chia sẻ
 
 
 # Cài đặt và sử dụng EdgeDriver
