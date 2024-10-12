@@ -8,19 +8,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y wget
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y python3 python3-pip
+        pip install -r requirements.txt
 
-          # Cài đặt Microsoft Edge Dev
-          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_135.0.xxxx.x-1_amd64.deb
-          sudo dpkg -i microsoft-edge-dev_135.0.xxxx.x-1_amd64.deb || sudo apt install -f
+    - name: Install Microsoft Edge
+      run: |
+        wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
+        sudo dpkg -i microsoft-edge-dev_131.0.2875.0-1_amd64.deb || sudo apt-get install -f
 
-      - name: Run tests
-        run: python3 tests/test_login.py
+    - name: Run tests
+      run: |
+        python3 tests/test_login.py
