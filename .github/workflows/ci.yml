@@ -23,6 +23,8 @@ jobs:
       run: |
         wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
         sudo dpkg -i microsoft-edge-dev_131.0.2875.0-1_amd64.deb || sudo apt-get install -f
+        wget https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/123.0.2420.97/edgedriver_linux64.zip
+        unzip edgedriver_linux64.zip
         sudo mv msedgedriver /usr/local/bin/msedgedriver
 
     - name: Start local web server
