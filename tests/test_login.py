@@ -5,9 +5,14 @@ from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+
+# Khởi tạo Edge WebDriver với WebDriver Manager
+service = Service(EdgeChromiumDriverManager().install())
+
 
 # Cài đặt và sử dụng EdgeDriver
-service = Service()  # Cung cấp đường dẫn nếu cần
+# service = Service()  # Cung cấp đường dẫn nếu cần
 options = Options()
 options.headless = False  # Để trình duyệt hiển thị, dễ quan sát quá trình kiểm thử
 
