@@ -10,11 +10,16 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # Khởi tạo Edge WebDriver với WebDriver Manager
 service = Service(EdgeChromiumDriverManager().install())
 
+options = Options()
+options.headless = True  # Chạy trình duyệt trong chế độ headless
+options.add_argument('--no-sandbox')  # Bỏ qua sandbox
+options.add_argument('--disable-dev-shm-usage')  # Giảm sử dụng bộ nhớ chia sẻ
+
 
 # Cài đặt và sử dụng EdgeDriver
 # service = Service()  # Cung cấp đường dẫn nếu cần
-options = Options()
-options.headless = False  # Để trình duyệt hiển thị, dễ quan sát quá trình kiểm thử
+# options = Options()
+# options.headless = False  # Để trình duyệt hiển thị, dễ quan sát quá trình kiểm thử
 
 # Khởi tạo Edge WebDriver
 driver = webdriver.Edge(service=service, options=options)
