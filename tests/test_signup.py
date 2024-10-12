@@ -10,7 +10,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # Khởi tạo Edge WebDriver
 service = Service(EdgeChromiumDriverManager().install())
 options = Options()
-options.headless = False  # Để trình duyệt hiển thị
+options.headless = True  # Để trình duyệt hiển thị
 driver = webdriver.Edge(service=service, options=options)
 
 # Hàm mở trang đăng ký
