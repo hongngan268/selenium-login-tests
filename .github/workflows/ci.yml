@@ -22,8 +22,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y wget
-          wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc
-          sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg microsoft.asc
 
           # Tải xuống và cài đặt Microsoft Edge Dev
           wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
