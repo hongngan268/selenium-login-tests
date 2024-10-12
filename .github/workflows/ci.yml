@@ -25,8 +25,8 @@ jobs:
         run: |
           sudo apt install -y wget
           wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.asc
-          sudo apt-key add microsoft.asc
-          sudo wget https://packages.microsoft.com/repos/edge/ubuntu/dists/stable/main/binary-amd64/Packages -O /etc/apt/sources.list.d/microsoft-edge-dev.list
+          sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg microsoft.asc
+          echo "deb [signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge/ubuntu/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/microsoft-edge-dev.list
           sudo apt update
 
       - name: Install Microsoft Edge
