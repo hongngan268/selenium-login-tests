@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 380px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Đăng Ký</h1>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required />
+        <input type="password" id="password" placeholder="Mật khẩu" required />
+        <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu" required />
+        <button id="signup-button">Đăng Ký</button>
+        <div id="message" class="error-message" style="display: none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('signup-button').addEventListener('click', function() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            var messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none'; // Ẩn thông điệp trước đó
+            messageDiv.innerHTML = ''; // Xóa nội dung thông điệp
+
+            // Khởi tạo mảng lưu trữ lỗi
+            var errors = [];
+
+            // Kiểm tra các điều kiện
+            if (username.length < 1) {
+                errors.push("Bỏ trống tên đăng nhập.");
+            } else if (!/^[a-zA-Z][a-zA-Z0-9]*[0-9]+$/.test(username)) {
+                errors.push("Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)");
+            }
+
+            if (password.length === 0) {
+                errors.push("Bỏ trống mật khẩu.");
+            }
+
+            if (password.length < 8) {
+                errors.push("Mật khẩu phải có ít nhất 8 ký tự.");
+            }
+
+            if (password !== confirmPassword) {
+                errors.push("Xác nhận mật khẩu không khớp.");
+            }
+
+            if (username.length < 5) {
+                errors.push("Tên đăng nhập phải có ít nhất 5 ký tự.");
+            }
+
+            if (confirmPassword.length < 1) {
+                errors.push("Bỏ trống xác nhận mật khẩu.");
+            }
+
+            // Nếu không có lỗi, hiển thị trang chào mừng
+            if (errors.length === 0) {
+                document.body.innerHTML = '<h1 style="text-align: center; margin-top: 20%;">Welcome</h1>'; // Thay đổi nội dung trang
+            } else {
+                // Hiển thị lỗi
+                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = errors.join('<br>');
+            }
+        });
+    </script>
+</body>
+</html>
