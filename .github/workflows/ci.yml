@@ -22,11 +22,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y wget
-
+          
           # Tải xuống và cài đặt Microsoft Edge Dev
-          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
-          sudo dpkg -i microsoft-edge-dev_119.0.2136.47-1_amd64.deb
-          sudo apt install -f  # Để cài đặt các phụ thuộc nếu cần
+          wget https://packages.microsoft.com/repos/edge/ubuntu/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
+          sudo dpkg -i microsoft-edge-dev_131.0.2875.0-1_amd64.deb || sudo apt install -f
 
       - name: Install Python packages
         run: pip install -r requirements.txt
