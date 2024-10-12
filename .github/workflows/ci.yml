@@ -3,32 +3,24 @@ name: CI
 on:
   push:
     branches:
-      - main  # Chạy CI khi có thay đổi trên nhánh main
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'  # Phiên bản Python bạn đang sử dụng
 
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y wget
-          
-          # Tải xuống và cài đặt Microsoft Edge Dev
-          wget https://packages.microsoft.com/repos/edge/ubuntu/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
-          sudo dpkg -i microsoft-edge-dev_131.0.2875.0-1_amd64.deb || sudo apt install -f
 
-      - name: Install Python packages
-        run: pip install -r requirements.txt
+          # Cài đặt Microsoft Edge Dev
+          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_135.0.xxxx.x-1_amd64.deb
+          sudo dpkg -i microsoft-edge-dev_135.0.xxxx.x-1_amd64.deb || sudo apt install -f
 
       - name: Run tests
-        run: python tests/test_login.py
+        run: python3 tests/test_login.py
