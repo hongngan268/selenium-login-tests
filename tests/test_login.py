@@ -11,7 +11,8 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 service = Service(EdgeChromiumDriverManager().install())
 
 options = Options()
-options.headless = True  # Chạy trình duyệt trong chế độ headless
+# options.headless = True  # Chạy trình duyệt trong chế độ headless
+options.add_argument("--headless")  # Chạy ở chế độ không có giao diện
 options.add_argument('--no-sandbox')  # Bỏ qua sandbox
 options.add_argument('--disable-dev-shm-usage')  # Giảm sử dụng bộ nhớ chia sẻ
 
