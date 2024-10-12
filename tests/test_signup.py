@@ -10,7 +10,9 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # Khởi tạo Edge WebDriver
 service = Service(EdgeChromiumDriverManager().install())
 options = Options()
-options.headless = True  # Để trình duyệt hiển thị
+options.add_argument("--headless")  # Chạy ở chế độ không có giao diện
+options.add_argument("--no-sandbox")  # Bỏ qua sandbox
+options.add_argument("--disable-dev-shm-usage")  # Giải phóng tài nguyên
 driver = webdriver.Edge(service=service, options=options)
 
 # Hàm mở trang đăng ký
