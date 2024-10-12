@@ -26,13 +26,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install selenium
 
-    - name: Set up ChromeDriver
-      uses: nanasess/setup-chromedriver@v1
-
-    - name: Install Chrome
+    - name: Set up Microsoft Edge and EdgeDriver
       run: |
         sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+        sudo apt-get install -y microsoft-edge-stable
+        sudo apt-get install -y microsoft-edge-dev
+
+    - name: Install EdgeDriver
+      run: |
+        sudo apt-get install -y msedgedriver
 
     - name: Run Selenium tests
       run: |
