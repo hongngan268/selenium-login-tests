@@ -18,8 +18,8 @@ driver = webdriver.Edge(service=service, options=options)
 # Hàm mở trang đăng ký
 def open_signup_page():
     print("Mở trang đăng ký...")
-    driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")  # Đường dẫn tới file signup.html
-    print(driver.page_source)  
+    # driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")  # Đường dẫn tới file signup.html
+    driver.get("http://localhost:8000/signup.html") 
 
 # Hàm định nghĩa lại các trường dữ liệu
 def define_fields():
