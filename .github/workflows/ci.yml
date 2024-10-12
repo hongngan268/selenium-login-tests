@@ -26,7 +26,7 @@ jobs:
           sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg microsoft.asc
 
           # Tải xuống và cài đặt Microsoft Edge Dev
-          wget https://packages.microsoft.com/repos/edge/ubuntu/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_119.0.2136.47-1_amd64.deb
+          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_131.0.2875.0-1_amd64.deb
           sudo dpkg -i microsoft-edge-dev_119.0.2136.47-1_amd64.deb
           sudo apt install -f  # Để cài đặt các phụ thuộc nếu cần
 
