@@ -1,7 +1,10 @@
-name: CI for Selenium Tests
+name: Selenium Login Tests
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -11,23 +14,29 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.10'  # Sử dụng phiên bản Python 3.10
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-        # Cài đặt Chromium
-        sudo apt update
-        sudo apt install -y chromium-browser
+        python -m pip install --upgrade pip
+        pip install selenium webdriver-manager
 
-    - name: Run tests
-      env:
-        DISPLAY: :99  # Thiết lập biến môi trường DISPLAY
+    - name: Install Microsoft Edge
       run: |
-        # Chạy các tests
-        python -m unittest discover tests
+        sudo apt update
+        sudo apt install -y microsoft-edge-stable
+
+    - name: Install Microsoft Edge WebDriver
+      run: |
+        sudo apt install -y microsoft-edge-dev
+        sudo apt install -y microsoft-edge-dev-webdriver
+        export PATH=$PATH:/usr/lib/microsoft-edge-dev
+
+    - name: Run Selenium tests
+      run: |
+        python tests/test_login.py
