@@ -72,7 +72,7 @@
             // Kiểm tra các điều kiện
             if (username.length < 1) {
                 errors.push("Bỏ trống tên đăng nhập.");
-            } else if (!/^[a-zA-Z0-9]+$/.test(username)) {
+            } else if (!/^[a-zA-Z][a-zA-Z0-9]*[0-9]+$/.test(username)) {
                 errors.push("Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)");
             }
 
@@ -98,7 +98,7 @@
 
             // Nếu không có lỗi, hiển thị trang chào mừng
             if (errors.length === 0) {
-                document.body.innerHTML = '<h1 style="text-align: center; margin-top: 20%;">Welcome</h1>'; // Thay đổi nội dung trang
+                document.body.innerHTML = '<h1 style="text-align: center; margin-top: 20%;">Welcome</h1>';
             } else {
                 // Hiển thị lỗi
                 messageDiv.style.display = 'block';
