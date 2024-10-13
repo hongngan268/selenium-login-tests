@@ -129,7 +129,7 @@ def test_username_unenough():
     username_field, password_field, confirm_password_field, signup_button = define_fields()
 
     print("Đang kiểm tra username có ký tự đặc biệt...")
-    username_field.send_keys("user!") 
+    username_field.send_keys("usr") 
     password_field.send_keys("validPassword")
     confirm_password_field.send_keys("validPassword")
     time.sleep(1)
