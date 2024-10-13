@@ -10,6 +10,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # Khởi tạo Edge WebDriver
 service = Service(EdgeChromiumDriverManager().install())
 options = Options()
+# options.headless = False
 options.add_argument("--headless")  # Chạy ở chế độ không có giao diện
 options.add_argument("--no-sandbox")  # Bỏ qua sandbox
 options.add_argument("--disable-dev-shm-usage")  # Giải phóng tài nguyên
@@ -49,7 +50,7 @@ def test_successful_signup():
         assert "Welcome" in driver.page_source
         print("Test 1 Passed: Đăng ký thành công.")
     except Exception as e:
-        print(f"Test 1 Failed: {e}")
+        print(f"Test 1 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 2: Không đúng định dạng của username - Chỉ có số
@@ -61,7 +62,7 @@ def test_invalid_username_format():
     username_field.send_keys("12345")  # Không có chữ cái đầu tiên
     password_field.send_keys("validPassword")
     confirm_password_field.send_keys("validPassword")
-    time.sleep(2)
+    time.sleep(1)
     signup_button.click()
 
     time.sleep(2)
@@ -72,7 +73,7 @@ def test_invalid_username_format():
         assert "Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)" in error_message.text or "Tên đăng nhập không đúng định dạng." in error_message.text
         print("Test 2 Passed: Không đúng định dạng của username - Chỉ có số")
     except Exception as e:
-        print(f"Test 2 Failed: {e}")
+        print(f"Test 2 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 3: Không đúng định dạng của username – Chỉ có chữ
@@ -95,7 +96,7 @@ def test_username_only_letters():
         assert "Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)" in error_message.text
         print("Test 3 Passed: Không đúng định dạng của username – Chỉ có chữ")
     except Exception as e:
-        print(f"Test 3 Failed: {e}")
+        print(f"Test 3 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 4: Không đúng định dạng của username – có kí tự đặc biệt
@@ -118,7 +119,7 @@ def test_username_special_characters():
         assert "Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)" in error_message.text
         print("Test 4 Passed: Không đúng định dạng của username – có kí tự đặc biệt")
     except Exception as e:
-        print(f"Test 4 Failed: {e}")
+        print(f"Test 4 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 5: Không đúng định dạng của username – không đủ 5 ký tự
@@ -141,7 +142,7 @@ def test_username_unenough():
         assert "Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)" in error_message.text
         print("Test 5 Passed: Không đúng định dạng của username – không đủ 5 ký tự")
     except Exception as e:
-        print(f"Test 5 Failed: {e}")
+        print(f"Test 5 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 6: Bỏ trống username
@@ -164,7 +165,7 @@ def test_empty_username():
         assert "Bỏ trống tên đăng nhập." in error_message.text
         print("Test 6 Passed: Bỏ trống username.")
     except Exception as e:
-        print(f"Test 6 Failed: {e}")
+        print(f"Test 6 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 7: Không đủ ký tự của password
@@ -187,7 +188,7 @@ def test_invalid_password_length():
         assert "Mật khẩu phải có ít nhất 8 ký tự." in error_message.text
         print("Test 7 Passed: Không đủ ký tự của password.")
     except Exception as e:
-        print(f"Test 7 Failed: {e}")
+        print(f"Test 7 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 8: Bỏ trống password
@@ -210,7 +211,7 @@ def test_empty_password():
         assert "Bỏ trống mật khẩu." in error_message.text
         print("Test 8 Passed: Bỏ trống password.")
     except Exception as e:
-        print(f"Test 8 Failed: {e}")
+        print(f"Test 8 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 9: Confirm password không giống với password
@@ -233,7 +234,7 @@ def test_mismatched_passwords():
         assert "Xác nhận mật khẩu không khớp." in error_message.text
         print("Test 9 Passed: Confirm password không giống với password.")
     except Exception as e:
-        print(f"Test 9 Failed: {e}")
+        print(f"Test 9 Failed")
 
 #----------------------------------------------------------------------------------------------------
 # Test case 10: Bỏ trống confirm password
@@ -256,7 +257,7 @@ def test_empty_confirm_password():
         assert "Bỏ trống xác nhận mật khẩu." in error_message.text
         print("Test 10 Passed: Bỏ trống confirm password.")
     except Exception as e:
-        print(f"Test 10 Failed: {e}")
+        print(f"Test 10 Failed")
 
 
 
