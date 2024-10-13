@@ -15,6 +15,7 @@ options.add_argument("--headless")  # Chạy ở chế độ không có giao di�
 options.add_argument("--no-sandbox")  # Bỏ qua sandbox
 options.add_argument("--disable-dev-shm-usage")  # Giải phóng tài nguyên
 driver = webdriver.Edge(service=service, options=options)
+driver.implicitly_wait(60) 
 
 # Hàm mở trang đăng ký
 def open_signup_page():
@@ -24,10 +25,10 @@ def open_signup_page():
 
 # Hàm định nghĩa lại các trường dữ liệu
 def define_fields():
-    username_field = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "username")))
-    password_field = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "password")))
-    confirm_password_field = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "confirm-password")))
-    signup_button = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "signup-button")))
+    username_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "username")))
+    password_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "password")))
+    confirm_password_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "confirm-password")))
+    signup_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "signup-button")))
     return username_field, password_field, confirm_password_field, signup_button
 
 #----------------------------------------------------------------------------------------------------
