@@ -63,16 +63,20 @@
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirm-password').value;
             var messageDiv = document.getElementById('message');
-            messageDiv.style.display = 'none'; // Ẩn thông điệp trước đó
-            messageDiv.innerHTML = ''; // Xóa nội dung thông điệp
+            messageDiv.style.display = 'none';
+            messageDiv.innerHTML = '';
 
-            // Khởi tạo mảng lưu trữ lỗi
             var errors = [];
 
-            // Kiểm tra các điều kiện
-            if (username.length < 1) {
+            if (username.length === 0) {
                 errors.push("Bỏ trống tên đăng nhập.");
-            } else if (!/^[a-zA-Z][a-zA-Z0-9]*[0-9]+$/.test(username)) {
+            } 
+
+            if (username.length < 5) {
+                errors.push("Tên đăng nhập phải có ít nhất 5 ký tự.");
+            }
+
+            if (!/^[a-zA-Z][a-zA-Z0-9]*[0-9]+$/.test(username)) {
                 errors.push("Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)");
             }
 
@@ -88,19 +92,13 @@
                 errors.push("Xác nhận mật khẩu không khớp.");
             }
 
-            if (username.length < 5) {
-                errors.push("Tên đăng nhập phải có ít nhất 5 ký tự.");
-            }
-
-            if (confirmPassword.length < 1) {
+            if (confirmPassword.length === 0) {
                 errors.push("Bỏ trống xác nhận mật khẩu.");
             }
 
-            // Nếu không có lỗi, hiển thị trang chào mừng
             if (errors.length === 0) {
                 document.body.innerHTML = '<h1 style="text-align: center; margin-top: 20%;">Welcome</h1>'; 
             } else {
-                // Hiển thị lỗi
                 messageDiv.style.display = 'block';
                 messageDiv.innerHTML = errors.join('<br>');
             }
