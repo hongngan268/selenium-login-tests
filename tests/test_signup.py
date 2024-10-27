@@ -11,16 +11,16 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 service = Service(EdgeChromiumDriverManager().install())
 options = Options()
 # options.headless = False
-options.add_argument("--headless")  # Chạy ở chế độ không có giao diện
-options.add_argument("--no-sandbox")  # Bỏ qua sandbox
-options.add_argument("--disable-dev-shm-usage")  # Giải phóng tài nguyên
+options.add_argument("--headless") 
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Edge(service=service, options=options)
 driver.implicitly_wait(60) 
 
 # Hàm mở trang đăng ký
 def open_signup_page():
     print("Mở trang đăng ký...")
-    # driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")  # Đường dẫn tới file signup.html
+    # driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")
     driver.get("http://localhost:8000/signup.html") 
 
 # Hàm định nghĩa lại các trường dữ liệu
@@ -38,13 +38,13 @@ def test_successful_signup():
     username_field, password_field, confirm_password_field, signup_button = define_fields()
 
     print("Đang kiểm tra đăng ký thành công với thông tin hợp lệ...")
-    username_field.send_keys("validUser1")  # Username hợp lệ
-    password_field.send_keys("validPassword")  # Password hợp lệ
-    confirm_password_field.send_keys("validPassword")  # Xác nhận Password hợp lệ
+    username_field.send_keys("validUser1")
+    password_field.send_keys("validPassword")
+    confirm_password_field.send_keys("validPassword")
     time.sleep(1)
     signup_button.click()
 
-    time.sleep(2)  # Đợi một chút để xem kết quả
+    time.sleep(2)
 
     # Kiểm tra trang chào mừng
     try:
