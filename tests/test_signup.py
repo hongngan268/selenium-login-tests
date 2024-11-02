@@ -10,18 +10,18 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # Khởi tạo Edge WebDriver
 service = Service(EdgeChromiumDriverManager().install())
 options = Options()
-options.headless = False
-#options.add_argument("--headless") 
-#options.add_argument("--no-sandbox")
-#options.add_argument("--disable-dev-shm-usage")
+# options.headless = False
+options.add_argument("--headless") 
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Edge(service=service, options=options)
 driver.implicitly_wait(60) 
 
 # Hàm mở trang đăng ký
 def open_signup_page():
     print("Mở trang đăng ký...")
-    driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")
-    #driver.get("http://localhost:8000/signup.html") 
+    # driver.get("file:///C:/Users/vuhon/selenium-login-tests/signup.html")
+    driver.get("http://localhost:8000/signup.html") 
 
 # Hàm định nghĩa lại các trường dữ liệu
 def define_fields():
