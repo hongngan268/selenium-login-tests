@@ -76,7 +76,7 @@
                 errors.push("Tên đăng nhập phải có ít nhất 5 ký tự.");
             }
 
-            if (!/^[a-zA-Z][a-zA-Z0-9]+$/.test(username)) {
+            if (!/^[a-zA-Z][a-zA-Z0-9]*[0-9]+$/.test(username)) {
                 errors.push("Tên đăng nhập không hợp lệ. (Phải bắt đầu bằng chữ cái, ít nhất 5 ký tự, chỉ chứa chữ và số)");
             }
 
