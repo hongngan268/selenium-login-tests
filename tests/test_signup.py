@@ -275,6 +275,6 @@ test_mismatched_passwords()
 test_empty_confirm_password()
 
 
-# Đóng trình duyệt
+# Đóng trình duyệt6
 print("Đang đóng trình duyệt...")
 driver.quit()
